@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  space-portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: space-portfolio
+    restart: unless-stopped
+    ports:
+      - "3001:3000"  # Porta 3001 no host, 3000 no container
+    environment:
+      - NODE_ENV=production
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
